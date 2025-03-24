@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'GardensC';
+    src: local('GardensC Regular'), local('GardensC'), url('gardenscregular.woff2') format('woff2'), url('gardenscregular.woff') format('woff'), url('gardenscregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
