@@ -39,5 +39,35 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   tabs();
+
+  // Slider
+
+    $(function() {
+      $('.comments__slider').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    prevArrow: '<img class="arrow arrow-left" src="images/arrow-left.png" alt="">',
+    nextArrow: '<img class="arrow arrow-right" src="images/arrow-right.png" alt="">'
+    });
 })
 
+
+    /* $('.comments__slider').slick({
+      dots: true,
+    slidesToShow: 4,
+    variableWidth: true,
+    prevArrow: '<img class="arrow arrow-left" src="images/arrow-left.svg" alt="">',
+    nextArrow: '<img class="arrow arrow-right" src="images/arrow-right.svg" alt="">',
+    responsive: [
+      {
+        breakpoint: 361,
+        settings: {
+          variableWidth: false,
+          slidesToShow: 1,
+        }
+      }
+    ]
+    }); */
+});
