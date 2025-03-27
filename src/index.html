@@ -16,11 +16,11 @@
       <nav class="nav">
         <img class="nav-img" src="images/logo.png"/>
         <ul class="nav-list">
-          <li><a class="nav-item" href="#">О нас</a></li>
-          <li><a class="nav-item active" href="#">Наши услуги</a></li>
-          <li><a class="nav-item" href="#">Почему мы</a></li>
-          <li><a class="nav-item" href="#">Отзывы</a></li>
-          <li><a class="nav-item" href="#">Контакты</a></li>
+          <li><a class="nav-item" href="#aboutUs">О нас</a></li>
+          <li><a class="nav-item" href="#services">Наши услуги</a></li>
+          <li><a class="nav-item" href="#whyUs">Почему мы</a></li>
+          <li><a class="nav-item" href="#comments">Отзывы</a></li>
+          <li><a class="nav-item" href="#contacts">Контакты</a></li>
         </ul>
         <div class="nav-contacts">
           <a class="nav-contacts__phone" phone="">+7 (911) 114-67-93</a>
@@ -34,17 +34,20 @@
         <h1 class="header-title">&#8220;Интеллектуал&#8221; - школа гармоничного развития способностей</h1>
         <p class="header-subtitle">Бережно поможем вашему ребенку раскрыть свои потенциалы</p>
         <div class="header-buttons">
-        <button class="button-yellow">Пробный урок</button>
-        <button class="button-dashed">Выбрать программу</button>
+        <a href="#services" class="button-container"><button class="button-yellow">Пробный урок</button></a>
+        <a href="#services" class="button-container"><button class="button-dashed">Выбрать программу</button>
+        </a>
         </div>
       </div>
     </div>
     </header>
 
+    <div class="btn-up btn-up_hide"></div>
+
     <main>
       <div class="relative"></div>
       <div class="container">
-        <section class="whyUs">
+        <section id="whyUs" class="whyUs">
           <div class="whyUs-title_container">
             <h2 class="whyUs-title">Почему мы</h2>
           </div>
@@ -64,7 +67,7 @@
           </div>
         </section>
         
-        <section class="services">
+        <section id="services" class="services">
           <h2 class="services-title">Курсы и занятия</h2>
           <div class="services-items">
             <div class="services-item active-service">Курс <span class="services-item__span">&laquo;Легкий старт&raquo;</span></div>
@@ -79,8 +82,8 @@
               <div class="services-content__container">
                 <div class="services-content__left">
                   <img class="services-content__img" src="images/services-img1.png"/>
-                  <button class="button-yellow services-button">Записаться</button>
-                  <button class="button-dashed services-button dashed">Пробное занятие</button>
+                  <button data-modal="modal1" class="button-yellow services-button">Записаться</button>
+                  <button data-modal="modal5" class="button-dashed services-button dashed">Пробное занятие</button>
                 </div>
                 <div class="services-content__right">
                   <p class="services-content__text">
@@ -133,8 +136,8 @@
               <div class="services-content__container">
                 <div class="services-content__left">
                   <img class="services-content__img" src="images/services-img3.png"/>
-                  <button class="button-yellow services-button">Записаться</button>
-                  <button class="button-dashed services-button dashed">Пробное занятие</button>
+                  <button data-modal="modal2" class="button-yellow services-button">Записаться</button>
+                  <button data-modal="modal5" class="button-dashed services-button dashed">Пробное занятие</button>
                 </div>
                 <div class="services-content__right">
                   <p class="services-content__text">
@@ -177,8 +180,8 @@
               <div class="services-content__container">
                 <div class="services-content__left">
                   <img class="services-content__img" src="images/services-img2.png"/>
-                  <button class="button-yellow services-button">Записаться</button>
-                  <button class="button-dashed services-button dashed">Пробное занятие</button>
+                  <button data-modal="modal3" class="button-yellow services-button">Записаться</button>
+                  <button data-modal="modal5" class="button-dashed services-button dashed">Пробное занятие</button>
                 </div>
                 <div class="services-content__right">
                   <p class="services-content__text">
@@ -224,8 +227,8 @@
               <div class="services-content__container">
                 <div class="services-content__left">
                   <img class="services-content__img" src="images/services-img4.png"/>
-                  <button class="button-yellow services-button">Записаться</button>
-                  <button class="button-dashed services-button dashed">Пробное занятие</button>
+                  <button data-modal="modal4" class="button-yellow services-button">Записаться</button>
+                  <button data-modal="modal5" class="button-dashed services-button dashed">Пробное занятие</button>
                 </div>
                 <div style="margin-top: 25px" class="services-content__right">
                   <p class="services-content__text">
@@ -259,7 +262,7 @@
 
         </section>
 
-        <section class="aboutUs">
+        <section id="aboutUs" class="aboutUs">
           <h2 class="aboutUs__title">О нас</h2>
           <div class="aboutUs__wrapper">
             <div class="aboutUs__left">
@@ -283,7 +286,7 @@
         </section>
       </div>
       
-        <section class="comments">
+        <section id="comments" class="comments">
           <h2 class="comments__title">Родители говорят о нас</h2>
             <div class="comments__slider">
                 <div class="comments__item">
@@ -333,7 +336,7 @@
             </div>
         </section>
 
-        <section class="contacts">
+        <section id="contacts" class="contacts">
           <h2 class="contacts__title">Контакты</h2>
           <div class="contacts__map"></div>
           <div class="contacts__content">
@@ -362,6 +365,93 @@
       <p class="footer__text">Политика конфиденциальности</p>
       <p class="footer__text">© Все права защищены 2022 </p>
     </footer>
+
+    <div id="modal1" class="modal">
+      <div class="modal__dialog">
+        <form class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <h2 class="modal__title">Курс</h2>
+          <h2 class="modal__title">&laquo;Легкий старт для первоклассников&raquo;</h2>
+          <div class="modal__text-container">
+            <p class="modal__text">Заполните форму и наш менеджер</p>
+            <p class="modal__text">свяжется с вами в ближайшее время</p>
+          </div>
+          <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
+          <input required placeholder="Ваш телефон" name="phone" type="phone" class="modal__input">
+          <input required placeholder="Ваше e-mail" name="email" type="email" class="modal__input">
+          <button class="button-yellow modal__btn" type="submit">Записаться</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal__dialog">
+        <form class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <h2 class="modal__title">Курс &laquo;Эрудит&raquo;</h2>
+          <div class="modal__text-container">
+            <p class="modal__text">Заполните форму и наш менеджер</p>
+            <p class="modal__text">свяжется с вами в ближайшее время</p>
+          </div>
+          <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
+          <input required placeholder="Ваш телефон" name="phone" type="phone" class="modal__input">
+          <input required placeholder="Ваше e-mail" name="email" type="email" class="modal__input">
+          <button class="button-yellow modal__btn" type="submit">Записаться</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal3" class="modal">
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <h2 class="modal__title">Курс &laquo;Вундеркинд&raquo;</h2>
+          <div class="modal__text-container">
+            <p class="modal__text">Заполните форму и наш менеджер</p>
+            <p class="modal__text">свяжется с вами в ближайшее время</p>
+          </div>
+          <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
+          <input required placeholder="Ваш телефон" name="phone" type="phone" class="modal__input">
+          <input required placeholder="Ваше e-mail" name="email" type="email" class="modal__input">
+          <button class="button-yellow modal__btn" type="submit">Записаться</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal4" class="modal">
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <h2 class="modal__title">Начальная школа &laquo;Семейное образование&raquo;</h2>
+          <div class="modal__text-container">
+            <p class="modal__text">Заполните форму и наш менеджер</p>
+            <p class="modal__text">свяжется с вами в ближайшее время</p>
+          </div>
+          <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
+          <input required placeholder="Ваш телефон" name="phone" type="phone" class="modal__input">
+          <input required placeholder="Ваше e-mail" name="email" type="email" class="modal__input">
+          <button class="button-yellow modal__btn" type="submit">Записаться</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal5" class="modal">
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <div data-close class="modal__close">&times;</div>
+          <h2 class="modal__title">ПРИХОДИТЕ НА ПРОБНОЕ ЗАНЯТИЕ,</h2>
+          <h2 class="modal__title">чтобы увидеть всё своими глазами</h2>
+          <div class="modal__text-container">
+            <p class="modal__text">Заполните форму и наш менеджер</p>
+            <p class="modal__text">свяжется с вами в ближайшее время</p>
+          </div>
+          <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
+          <input required placeholder="Ваш телефон" name="phone" type="phone" class="modal__input">
+          <input required placeholder="Ваше e-mail" name="email" type="email" class="modal__input">
+          <button class="button-yellow modal__btn" type="submit">Записаться</button>
+        </div>
+      </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
     <script src="js/script.js"></script>
