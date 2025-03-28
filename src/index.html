@@ -10,7 +10,7 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 </head>
 <body>
-  
+  <div class="overlay"></div>
     <header>
       <div class="container">
       <nav class="nav">
@@ -23,11 +23,36 @@
           <li><a class="nav-item" href="#contacts">Контакты</a></li>
         </ul>
         <div class="nav-contacts">
-          <a class="nav-contacts__phone" phone="">+7 (911) 114-67-93</a>
+          <a class="nav-contacts__phone" href="tel:+79111146793">+7 (911) 114-67-93</a>
+          <div class="nav-contacts__icons">
           <a href="#"><img class="nav-contacts__img" src="images/whatsapp.png"/></a>
           <a href="#"><img class="nav-contacts__img" src="images/telegram.png"/></a>
           <a href="#"><img class="nav-contacts__img" src="images/phone.png"/></a>
+          </div>
         </div>
+        <div class="burger">
+          <span></span>
+                <span></span>
+                <span></span>
+      </div>
+      <div class="nav-menu">
+        <span class="close-btn">&times;</span>
+          <ul class="nav-list">
+              <li><a class="nav-item" href="#aboutUs">О нас</a></li>
+              <li><a class="nav-item" href="#services">Наши услуги</a></li>
+              <li><a class="nav-item" href="#whyUs">Почему мы</a></li>
+              <li><a class="nav-item" href="#comments">Отзывы</a></li>
+              <li><a class="nav-item" href="#contacts">Контакты</a></li>
+          </ul>
+          <div class="nav-contacts">
+              <a class="nav-contacts__phone" href="tel:+79111146793">+7 (911) 114-67-93</a>
+              <div class="nav-contacts__icons">
+                  <a href="#"><img class="nav-contacts__img" src="images/whatsapp.png"/></a>
+                  <a href="#"><img class="nav-contacts__img" src="images/telegram.png"/></a>
+                  <a href="#"><img class="nav-contacts__img" src="images/phone.png"/></a>
+              </div>
+          </div>
+      </div>
       </nav>
       
       <div class="header">
@@ -343,7 +368,7 @@
             <h3 class="contacts__subtitle">Остались вопросы?</h3>
             <p class="contacts__text-title">Свяжитесь с нами!</p>
             <div class="contacts__info-container">
-              <a href="tel:7 (911) 114-67-93" class="contacts__phone">+7 (911) 114-67-93</a>
+              <a href="tel:+7 (911) 114-67-93" class="contacts__phone">+7 (911) 114-67-93</a>
             <div class="contacts__address">
               <p class="contacts__text">Кондратьевский пр-кт, дом 62, к 1</p>
               <p class="contacts__text">ул. Флотская, дом 7</p>

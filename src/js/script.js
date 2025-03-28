@@ -253,7 +253,31 @@ function init() {
 
     forms();
 
+    const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
 
+        function closeMenu() {
+            navMenu.classList.remove('open'); // Закрытие меню
+            overlay.classList.remove('active'); // Скрытие затемнения
+        }
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open'); // Открытие/закрытие меню
+            overlay.classList.toggle('active'); // Появление/скрытие затемнения
+        }
+
+        burger.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !burger.contains(event.target) && navMenu.classList.contains('open')) {
+                closeMenu();
+            }
+        });
 
 });
 
