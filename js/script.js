@@ -158,7 +158,6 @@ function init() {
     dashedButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         sourceElement = btn.closest('.services-content');
-        console.log(sourceElement);
         openModal('modal5');
       })
     })
@@ -193,7 +192,7 @@ function init() {
 
         console.log("Данные формы:", formData);
 
-        fetch("https://script.google.com/macros/s/AKfycbxMN1hqkhOPKRJainEx-zWdTL1Ac_z76NHPK_9moPQwr2ExPekWAGaVgeXLyd-kDBCH/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbw4DgDISQ4eFcgmOFNLIRerpbnspI5_P03jbhtIHkToyFEcyw3wyk75ZzjXnWGlfcwq/exec", {
           method: "POST",
           body: JSON.stringify(formData),
           headers: { "Content-Type": "application/json" },
