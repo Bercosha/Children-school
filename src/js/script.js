@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-
   // Tabs
   function tabs() {
     const tabs = document.querySelectorAll('.services-item'),
@@ -178,8 +177,85 @@ function init() {
     // Forms
 
     
+      const form = document.querySelector(".modal__content");
 
-    function forms() {
+      form.addEventListener("submit", function (e) {
+        console.log("Отмена стандартной отправки формы");
+        e.preventDefault();
+
+        console.log("Форма отправляется!");
+
+        const formData = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim(),
+        };
+
+        console.log("Данные формы:", formData);
+
+        fetch("https://script.google.com/macros/s/AKfycbxMN1hqkhOPKRJainEx-zWdTL1Ac_z76NHPK_9moPQwr2ExPekWAGaVgeXLyd-kDBCH/exec", {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
+        })
+          .then(response => response.text())
+          .then(data => {
+            console.log("Ответ сервера:", data);
+            alert("Заявка отправлена!");
+            form.reset();
+          })
+          .catch(error => console.error("Ошибка:", error));
+      })
+  
+
+   // Burger
+
+    const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
+
+        function closeMenu() {
+            navMenu.classList.remove('open'); // Закрытие меню
+            overlay.classList.remove('active'); // Скрытие затемнения
+        }
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open'); // Открытие/закрытие меню
+            overlay.classList.toggle('active'); // Появление/скрытие затемнения
+        }
+
+        burger.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !burger.contains(event.target) && navMenu.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
+});
+
+/* const postData = async (url, data) => {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: data
+    });
+    return await res.json();
+  } catch (error) {
+    console.error('Ошибка отправки данных', error);
+  }
+} */
+
+    
+
+    /* function forms() {
       const forms = document.querySelectorAll('form');
 
       const message = {
@@ -221,9 +297,9 @@ function init() {
              statusMessage.remove();
           })
         })
-      }
+      } */
 
-      function showThanksModal(message){
+/*       function showThanksModal(message){
         const prevModalDialog = document.querySelector('.modal__dialog');
     
         prevModalDialog.classList.add('hide');
@@ -244,54 +320,11 @@ function init() {
           prevModalDialog.classList.remove('hide');
           closeModal('.modal');
         }, 4000);
-      }
+      } */
 
-      fetch('http://localhost:3000/menu')
+/*       fetch('http://localhost:3000/menu')
       .then(data => data.json())
 
     }
 
-    forms();
-
-    const burger = document.querySelector('.burger');
-        const navMenu = document.querySelector('.nav-menu');
-        const closeBtn = document.querySelector('.close-btn');
-        const overlay = document.querySelector('.overlay');
-
-        function closeMenu() {
-            navMenu.classList.remove('open'); // Закрытие меню
-            overlay.classList.remove('active'); // Скрытие затемнения
-        }
-
-        function toggleMenu() {
-            navMenu.classList.toggle('open'); // Открытие/закрытие меню
-            overlay.classList.toggle('active'); // Появление/скрытие затемнения
-        }
-
-        burger.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu);
-        
-        // Закрытие меню при клике вне его области
-        document.addEventListener('click', (event) => {
-            if (!navMenu.contains(event.target) && !burger.contains(event.target) && navMenu.classList.contains('open')) {
-                closeMenu();
-            }
-        });
-
-});
-
-const postData = async (url, data) => {
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: data
-    });
-    return await res.json();
-  } catch (error) {
-    console.error('Ошибка отправки данных', error);
-  }
-}
+    forms(); */
