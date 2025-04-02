@@ -192,7 +192,7 @@ function init() {
 
         console.log("Данные формы:", formData);
 
-        fetch("https://script.google.com/macros/s/AKfycbw4DgDISQ4eFcgmOFNLIRerpbnspI5_P03jbhtIHkToyFEcyw3wyk75ZzjXnWGlfcwq/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbxeO5CZT18FJNoHFUEU354caKj1h3cpFYSDx4ivGwiS7zByYWbMSLP8ovoYs-Fs_qd6/exec", {
           method: "POST",
           body: JSON.stringify(formData),
           headers: { "Content-Type": "application/json" },
