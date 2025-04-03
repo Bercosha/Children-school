@@ -175,9 +175,71 @@ function init() {
 
     // Forms
 
-    
+
+    const URL_APP = "https://script.google.com/macros/s/AKfycbzhw_plV_F015cDL72_4xuVGHFcR0Ds76og92YAQXBOsSDzJ8tgfvvGY2Hz0R0kzaTA/exec";
+    const form = document.querySelector(".modal__content");
+
+      form.addEventListener("submit", function (e) {
+        console.log("Отмена стандартной отправки формы");
+        e.preventDefault();
+
+        console.log("Форма отправляется!");
+
+        const formData = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim(),
+        };
+
+        console.log("Данные формы:", formData);
+
+        fetch(URL_APP, {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
+        })
+          .then(response => response.text())
+          .then(data => {
+            console.log("Ответ сервера:", data);
+            alert("Заявка отправлена!");
+            form.reset();
+          })
+          .catch(error => console.error("Ошибка:", error));
+      })
       
-      const URL_APP = "https://script.google.com/macros/s/AKfycbw4BETMnFDPGNH7288aohHDPnIjBK2w6zf9xcVKmYswfEXLw4IgvkJPxwrZnTHwB-_I/exec";
+   // Burger
+
+    const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+        const closeBtn = document.querySelector('.close-btn');
+        const overlay = document.querySelector('.overlay');
+
+        function closeMenu() {
+            navMenu.classList.remove('open'); // Закрытие меню
+            overlay.classList.remove('active'); // Скрытие затемнения
+        }
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open'); // Открытие/закрытие меню
+            overlay.classList.toggle('active'); // Появление/скрытие затемнения
+        }
+
+        burger.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !burger.contains(event.target) && navMenu.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
+});
+
+
+
+          /* const URL_APP = "https://script.google.com/macros/s/AKfycbw4BETMnFDPGNH7288aohHDPnIjBK2w6zf9xcVKmYswfEXLw4IgvkJPxwrZnTHwB-_I/exec";
 
       const form = document.querySelector(".modal__content");
 
@@ -235,67 +297,4 @@ function init() {
         if (result.type === 'error') {
           alert(`Ошибка(${result.errors}`)
         }
-        })
-  
-      
-  
-
-   // Burger
-
-    const burger = document.querySelector('.burger');
-        const navMenu = document.querySelector('.nav-menu');
-        const closeBtn = document.querySelector('.close-btn');
-        const overlay = document.querySelector('.overlay');
-
-        function closeMenu() {
-            navMenu.classList.remove('open'); // Закрытие меню
-            overlay.classList.remove('active'); // Скрытие затемнения
-        }
-
-        function toggleMenu() {
-            navMenu.classList.toggle('open'); // Открытие/закрытие меню
-            overlay.classList.toggle('active'); // Появление/скрытие затемнения
-        }
-
-        burger.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu);
-        
-        // Закрытие меню при клике вне его области
-        document.addEventListener('click', (event) => {
-            if (!navMenu.contains(event.target) && !burger.contains(event.target) && navMenu.classList.contains('open')) {
-                closeMenu();
-            }
-        });
-
-});
-
-/* const form = document.querySelector(".modal__content");
-
-      form.addEventListener("submit", function (e) {
-        console.log("Отмена стандартной отправки формы");
-        e.preventDefault();
-
-        console.log("Форма отправляется!");
-
-        const formData = {
-          name: form.name.value.trim(),
-          phone: form.phone.value.trim(),
-          email: form.email.value.trim(),
-        };
-
-        console.log("Данные формы:", formData);
-
-        fetch("https://script.google.com/macros/s/AKfycby6CUMxAhFUHIgEAJ0lWhVUmh4yZZuFA0kfjltsf33GDJOt8D7UTDugkOGeUKU3df4a/exec", {
-          method: "POST",
-          body: JSON.stringify(formData),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then(response => response.text())
-          .then(data => {
-            console.log("Ответ сервера:", data);
-            alert("Заявка отправлена!");
-            form.reset();
-          })
-          .catch(error => console.error("Ошибка:", error));
-      }) */
+        }) */
