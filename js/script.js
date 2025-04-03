@@ -176,7 +176,7 @@ function init() {
     // Forms
 
 
-    const URL_APP = "https://script.google.com/macros/s/AKfycbwSarY9tJrDIk0bkhXBK-wbN7opo2tAGPo_DLZam0ntM7Fz_H8W5RjqvPyT5jyLJkqd/exec";
+    /* const URL_APP = "https://script.google.com/macros/s/AKfycbwSarY9tJrDIk0bkhXBK-wbN7opo2tAGPo_DLZam0ntM7Fz_H8W5RjqvPyT5jyLJkqd/exec";
     const form = document.querySelector(".modal__content");
 
       form.addEventListener("submit", function (e) {
@@ -205,7 +205,7 @@ function init() {
             form.reset();
           })
           .catch(error => console.error("Ошибка:", error));
-      })
+      }) */
       
    // Burger
 
