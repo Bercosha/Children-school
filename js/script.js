@@ -176,35 +176,68 @@ function init() {
     // Forms
 
     
+      
+      const URL_APP = "https://script.google.com/macros/s/AKfycbw4BETMnFDPGNH7288aohHDPnIjBK2w6zf9xcVKmYswfEXLw4IgvkJPxwrZnTHwB-_I/exec";
+
       const form = document.querySelector(".modal__content");
 
-      form.addEventListener("submit", function (e) {
-        console.log("Отмена стандартной отправки формы");
+      form.action = URL_APP;
+
+      function isFilled(details) {
+        const {name, phone, email} = details;
+        if (!name) return false;
+        if (!phone) return false;
+        if (!email) return false;
+        return true;
+      }
+
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        console.log("Форма отправляется!");
+        const name = document.querySelector("[name=name]");
+        const phone = document.querySelector("[name=phone]");
+        const email = document.querySelector("[name=email]");
 
-        const formData = {
-          name: form.name.value.trim(),
-          phone: form.phone.value.trim(),
-          email: form.email.value.trim(),
+        let details = {
+          name: name.value.trim(),
+          phone: phone.value.trim(),
+          email: email.value.trim(),
         };
 
-        console.log("Данные формы:", formData);
+        if (!isFilled(details)) return;
 
-        fetch("https://script.google.com/macros/s/AKfycby6CUMxAhFUHIgEAJ0lWhVUmh4yZZuFA0kfjltsf33GDJOt8D7UTDugkOGeUKU3df4a/exec", {
+        let formBody = [];
+        for (let property in details) {
+          let encodedKey = encodeURIComponent(property);
+          let encodedValue = encodeURIComponent(details[property]);
+          formBody.push(encodedKey + "=" + encodedValue);
+        }
+
+        formBody = formBody.join("&");
+
+        const result = await fetch(URL_APP, {
           method: "POST",
-          body: JSON.stringify(formData),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          },
+          cors: "no-cors",
+          body: formBody
         })
-          .then(response => response.text())
-          .then(data => {
-            console.log("Ответ сервера:", data);
-            alert("Заявка отправлена!");
-            form.reset();
-          })
-          .catch(error => console.error("Ошибка:", error));
-      })
+        .then((res) => res.json())
+        .catch((err) => alert("Ошибка!"))
+
+        if (result.type === 'success') {
+          name.value = '';
+          phone.value = '';
+          email.value = '';
+          alert('Спасибо за заявку!')
+        }
+        if (result.type === 'error') {
+          alert(`Ошибка(${result.errors}`)
+        }
+        })
+  
+      
   
 
    // Burger
@@ -237,93 +270,32 @@ function init() {
 
 });
 
-/* const postData = async (url, data) => {
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: data
-    });
-    return await res.json();
-  } catch (error) {
-    console.error('Ошибка отправки данных', error);
-  }
-} */
+/* const form = document.querySelector(".modal__content");
 
-    
+      form.addEventListener("submit", function (e) {
+        console.log("Отмена стандартной отправки формы");
+        e.preventDefault();
 
-    /* function forms() {
-      const forms = document.querySelectorAll('form');
+        console.log("Форма отправляется!");
 
-      const message = {
-        loading: 'images/spinner.svg',
-        success: 'Спасибо! Скоро мы с вами свяжемся',
-        failure: 'Что-то пошло не так...'
-      };
+        const formData = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim(),
+        };
 
-      forms.forEach(item => {
-        bindPostData(item);
-      })
+        console.log("Данные формы:", formData);
 
-      function bindPostData(form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const statusMessage = document.createElement('img');
-          statusMessage.src = message.loading;
-          statusMessage.style.cssText = `
-            display: block;
-            margin: 0 auto;
-          `;
-          form.insertAdjacentElement('afterend', statusMessage);
-
-          const formData = new FormData(form);
-          console.log(formData);
-
-          const json = JSON.stringify(Object.fromEntries(formData.entries()));
-
-          postData('http://localhost:3000/requests', json)
-          .then(data => {
-            console.log(data);
-          })
-          .catch(() => {
-            showThanksModal(message.failure);
-          })
-          .finally(() => {
-            form.reset();
-             statusMessage.remove();
-          })
+        fetch("https://script.google.com/macros/s/AKfycby6CUMxAhFUHIgEAJ0lWhVUmh4yZZuFA0kfjltsf33GDJOt8D7UTDugkOGeUKU3df4a/exec", {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
         })
-      } */
-
-/*       function showThanksModal(message){
-        const prevModalDialog = document.querySelector('.modal__dialog');
-    
-        prevModalDialog.classList.add('hide');
-        openModal('.modal', modalTimerId);
-    
-        const thanksModal = document.createElement('div');
-        thanksModal.classList.add('modal__dialog');
-        thanksModal.innerHTML = `
-        <div class="modal__content">
-            <div class="modal__close" data-close>x</div>
-            <div class="modal__title">${message}</div>
-        </div>
-        `;
-        document.querySelector('.modal').append(thanksModal);
-        setTimeout(() => {
-          thanksModal.remove();
-          prevModalDialog.classList.add('show');
-          prevModalDialog.classList.remove('hide');
-          closeModal('.modal');
-        }, 4000);
-      } */
-
-/*       fetch('http://localhost:3000/menu')
-      .then(data => data.json())
-
-    }
-
-    forms(); */
+          .then(response => response.text())
+          .then(data => {
+            console.log("Ответ сервера:", data);
+            alert("Заявка отправлена!");
+            form.reset();
+          })
+          .catch(error => console.error("Ошибка:", error));
+      }) */
