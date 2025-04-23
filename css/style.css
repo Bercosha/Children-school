@@ -80,13 +80,15 @@ header{
   padding: 8px 25px;
   box-sizing: border-box; 
   border: 2px dashed transparent;
+  transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
 .nav-item:hover{
   color: white;
   border-color: white;
   background-color: #05566A;
-  border-radius: 20px;
+  
 }
 
 
